@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BookShelf.MainPage">
+
+    <StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+
+            <Label HorizontalOptions="EndAndExpand"
+                   Text="Fantasy"
+                   FontAttributes="Bold"
+                   Margin="0,8,8,0"
+                   FontSize="Medium"
+                   TextColor="Black"/>
+
+        </StackLayout>
+
+        <CollectionView ItemsSource="{Binding Books}"
+                        VerticalOptions="Start"
+                        ItemsLayout="HorizontalList">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+
+                    <Grid Padding="10" Margin="12">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+
+                        <Image Source="{Binding CoverImageUrl}"
+                               Grid.Row="0"
+                               VerticalOptions="Start"
+                               WidthRequest="220"
+                               HorizontalOptions="Start"
+                               HeightRequest="250"
+                               Aspect="AspectFill" />
+
+                        <StackLayout Grid.Row="1"
+                                     Margin="6">
+
+                            <Label Grid.Column="1"
+                                   VerticalOptions="Center"
+                                   Text="{Binding Title}"
+                                   FontAttributes="Bold" />
+
+
+                            <Label Text="{Binding Author}"
+                                   Grid.Row="1"
+                                   Grid.Column="1"
+                                   VerticalOptions="Start"
+                                   FontAttributes="Italic" />
+                        </StackLayout>
+
+                    </Grid>
+
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+
+</ContentPage>
