@@ -7,9 +7,23 @@
     Shell.FlyoutBehavior="Flyout"
     Title="BookShelf">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <TabBar>
+        <!-- Home Tab -->
+        <Tab Title="Home" Icon="dotnet_bot.png">
+            <ShellContent
+                Title="Home"
+                ContentTemplate="{DataTemplate local:MainPage}"
+                Route="MainPage" />
+        </Tab>
+
+        <!-- Library Tab -->
+        <Tab Title="Favourites" Icon="dotnet_bot.png">
+            <ShellContent
+                Title="Favourites"
+                ContentTemplate="{DataTemplate local:Favourites}"
+                Route="Favourites" />
+        </Tab>
+
+    </TabBar>
 
 </Shell>

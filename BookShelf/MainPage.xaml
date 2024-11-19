@@ -3,62 +3,143 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BookShelf.MainPage">
 
-    <StackLayout>
+    <Grid>
+        <ScrollView>
+            <StackLayout>
+                <SearchBar Placeholder="Search items..." />
 
-        <StackLayout Orientation="Horizontal">
+                <!-- Adventure Books Section -->
+                <StackLayout Padding="10">
+                    <Label Text="Adventure"
+                           FontAttributes="Bold"
+                           Margin="0,8,8,0"
+                           FontSize="Medium"
+                           TextColor="Black" />
 
-            <Label HorizontalOptions="EndAndExpand"
-                   Text="Fantasy"
-                   FontAttributes="Bold"
-                   Margin="0,8,8,0"
-                   FontSize="Medium"
-                   TextColor="Black"/>
+                    <CollectionView ItemsSource="{Binding Books}"
+                                    ItemsLayout="HorizontalList"
+                                    BackgroundColor="Transparent">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="12">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="1*" />
+                                    </Grid.RowDefinitions>
 
-        </StackLayout>
+                                    <Image Source="{Binding CoverImageUrl}"
+                                           Grid.Row="0"
+                                           VerticalOptions="Start"
+                                           WidthRequest="120"
+                                           HorizontalOptions="Start"
+                                           HeightRequest="190" />
+                                    <StackLayout Grid.Row="1" Margin="6">
+                                        <Label Text="{Binding Title}"
+                                               FontAttributes="Bold"
+                                               FontSize="Micro" />
+                                        <Label Text="{Binding Author}"
+                                               FontAttributes="Italic"
+                                               FontSize="Micro" />
+                                    </StackLayout>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
 
-        <CollectionView ItemsSource="{Binding Books}"
-                        VerticalOptions="Start"
-                        ItemsLayout="HorizontalList">
+                <!-- SCI-FI Books Section -->
+                <StackLayout Padding="10">
+                    <Label Text="SCI-FI"
+                           FontAttributes="Bold"
+                           Margin="0,8,8,0"
+                           FontSize="Medium"
+                           TextColor="Black" />
 
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
+                    <CollectionView ItemsSource="{Binding Books}"
+                                    ItemsLayout="HorizontalList"
+                                    BackgroundColor="Transparent">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="12">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="1*" />
+                                    </Grid.RowDefinitions>
 
-                    <Grid Padding="10" Margin="12">
+                                    <Image Source="{Binding CoverImageUrl}"
+                                           Grid.Row="0"
+                                           VerticalOptions="Start"
+                                           WidthRequest="120"
+                                           HorizontalOptions="Start"
+                                           HeightRequest="190" />
+                                    <StackLayout Grid.Row="1" Margin="6">
+                                        <Label Text="{Binding Title}"
+                                               FontAttributes="Bold"
+                                               FontSize="Micro" />
+                                        <Label Text="{Binding Author}"
+                                               FontAttributes="Italic"
+                                               FontSize="Micro" />
+                                    </StackLayout>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
 
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="1*" />
-                        </Grid.RowDefinitions>
+                <!-- Romance Books Section -->
+                <StackLayout Padding="10">
+                    <Label Text="Romance"
+                           FontAttributes="Bold"
+                           Margin="0,8,8,0"
+                           FontSize="Medium"
+                           TextColor="Black" />
 
-                        <Image Source="{Binding CoverImageUrl}"
-                               Grid.Row="0"
-                               VerticalOptions="Start"
-                               WidthRequest="220"
-                               HorizontalOptions="Start"
-                               HeightRequest="250"
-                               Aspect="AspectFill" />
+                    <CollectionView ItemsSource="{Binding Books}"
+                                    ItemsLayout="HorizontalList"
+                                    BackgroundColor="Transparent">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="12">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="1*" />
+                                    </Grid.RowDefinitions>
 
-                        <StackLayout Grid.Row="1"
-                                     Margin="6">
+                                    <Image Source="{Binding CoverImageUrl}"
+                                           Grid.Row="0"
+                                           VerticalOptions="Start"
+                                           WidthRequest="120"
+                                           HorizontalOptions="Start"
+                                           HeightRequest="190" />
+                                    <StackLayout Grid.Row="1" Margin="6">
+                                        <Label Text="{Binding Title}"
+                                               FontAttributes="Bold"
+                                               FontSize="Micro" />
+                                        <Label Text="{Binding Author}"
+                                               FontAttributes="Italic"
+                                               FontSize="Micro" />
+                                    </StackLayout>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
 
-                            <Label Grid.Column="1"
-                                   VerticalOptions="Center"
-                                   Text="{Binding Title}"
-                                   FontAttributes="Bold" />
+            </StackLayout>
+        </ScrollView>
 
-
-                            <Label Text="{Binding Author}"
-                                   Grid.Row="1"
-                                   Grid.Column="1"
-                                   VerticalOptions="Start"
-                                   FontAttributes="Italic" />
-                        </StackLayout>
-
-                    </Grid>
-
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-    </StackLayout>
-
+        <!-- Floating action button -->
+        <Button Text="+"
+                Clicked="OnFabClicked"
+                BackgroundColor="Red"
+                TextColor="White"
+                FontSize="24"
+                WidthRequest="60"
+                HeightRequest="60"
+                CornerRadius="30"
+                VerticalOptions="End"
+                HorizontalOptions="End"
+                Margin="20" />
+    </Grid>
+    
 </ContentPage>

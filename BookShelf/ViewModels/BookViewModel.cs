@@ -4,7 +4,7 @@ using BookShelf.Classes.Book;
 
 namespace BookShelf.ViewModels
 {
-    public class MainViewModel : INotifyPropertyChanged
+    public class BookViewModel : INotifyPropertyChanged
     {
         private ObservableCollection<Book> _books { get; set; }
 
@@ -20,7 +20,7 @@ namespace BookShelf.ViewModels
         }
 
         // Constructor to initialize sample data
-        public MainViewModel()
+        public BookViewModel()
         {
             Books = new ObservableCollection<Book>
             {

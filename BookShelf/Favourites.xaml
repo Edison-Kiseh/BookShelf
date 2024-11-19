@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BookShelf.Favourites"
+             Title="Favourites">
+    <ScrollView>
+        <CollectionView ItemsSource="{Binding Books}"
+                ItemsLayout="VerticalList"
+                BackgroundColor="Transparent">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="10" Margin="12">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <!-- For Image -->
+                            <RowDefinition Height="Auto" />
+                            <!-- For Title -->
+                            <RowDefinition Height="Auto" />
+                            <!-- For Author -->
+                        </Grid.RowDefinitions>
+
+                        <!-- Image -->
+                        <Image Source="{Binding CoverImageUrl}"
+                       Grid.Row="0"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"
+                       WidthRequest="120"
+                       HeightRequest="190" />
+
+                        <!-- Title -->
+                        <Label Text="{Binding Title}"
+                       Grid.Row="1"
+                       HorizontalTextAlignment="Center"
+                       FontAttributes="Bold"
+                       Margin="0,5,0,0" />
+
+                        <!-- Author -->
+                        <Label Text="{Binding Author}"
+                       Grid.Row="2"
+                       HorizontalTextAlignment="Center"
+                       FontAttributes="Italic"
+                       Margin="0,2,0,0" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </ScrollView>
+</ContentPage>
