@@ -24,6 +24,14 @@
                 Route="Favourites" />
         </Tab>
 
+        <!-- Add book Tab -->
+        <Tab Title="Add book" Icon="dotnet_bot.png">
+            <ShellContent
+                Title="Add book"
+                ContentTemplate="{DataTemplate local:AddBookPage}"
+                Route="AddBookPage" />
+        </Tab>
+
     </TabBar>
 
 </Shell>
