@@ -6,19 +6,19 @@
     <ScrollView>
         <StackLayout Padding="20" Spacing="15">
             <!-- Cover Image Selection -->
-            <Button x:Name="SelectCoverImageButton"
-                    Text="Select Cover Image"
-                    Clicked="OnSelectCoverImageClicked"
-                    BackgroundColor="LightGray"
-                    TextColor="Black" />
+            <VerticalStackLayout Spacing="25" Padding="30,0" VerticalOptions="Center">
+                <Image x:Name="BookImage" 
+                  BackgroundColor="Gray"
+                  WidthRequest="300"
+                  HeightRequest="300"
+                  HorizontalOptions="Center" />
 
-            <!-- Display the selected image -->
-            <Image x:Name="CoverImage"
-                   HeightRequest="200"
-                   WidthRequest="120"
-                   Aspect="AspectFit"
-                   HorizontalOptions="Center"
-                   VerticalOptions="CenterAndExpand" />
+                <Button
+                    Text="Pick an image"
+                    Clicked="OnSelectImage"
+                    HorizontalOptions="Center" />
+
+            </VerticalStackLayout>
 
             <!-- Title -->
             <Entry x:Name="TitleEntry"
@@ -31,17 +31,9 @@
                    ReturnType="Next" />
 
             <!-- Genre Picker -->
-            <Picker x:Name="GenrePicker"
-                    Title="Select Genre"
-                    SelectedIndexChanged="OnGenreSelected">
-                <Picker.Items>
-                    <x:String>Adventure</x:String>
-                    <x:String>Fantasy</x:String>
-                    <x:String>Sci-Fi</x:String>
-                    <x:String>Romance</x:String>
-                    <x:String>Non-Fiction</x:String>
-                </Picker.Items>
-            </Picker>
+            <Picker Title="Select a book genre"
+                ItemsSource="{Binding Books}"
+                ItemDisplayBinding="{Binding Genre}"/>
 
             <!-- ISBN -->
             <Entry x:Name="ISBNEntry"

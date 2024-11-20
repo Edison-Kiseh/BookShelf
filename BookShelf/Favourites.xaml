@@ -21,25 +21,27 @@
 
                         <!-- Image -->
                         <Image Source="{Binding CoverImageUrl}"
-                       Grid.Row="0"
-                       VerticalOptions="Center"
-                       HorizontalOptions="Center"
-                       WidthRequest="120"
-                       HeightRequest="190" />
+                           Grid.Row="0"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           WidthRequest="120"
+                           HeightRequest="190" />
 
                         <!-- Title -->
                         <Label Text="{Binding Title}"
-                       Grid.Row="1"
-                       HorizontalTextAlignment="Center"
-                       FontAttributes="Bold"
-                       Margin="0,5,0,0" />
+                           Grid.Row="1"
+                           HorizontalTextAlignment="Center"
+                           FontAttributes="Bold"
+                           Margin="0,5,0,0"
+                           FontSize="Micro"/>
 
                         <!-- Author -->
                         <Label Text="{Binding Author}"
-                       Grid.Row="2"
-                       HorizontalTextAlignment="Center"
-                       FontAttributes="Italic"
-                       Margin="0,2,0,0" />
+                           Grid.Row="2"
+                           HorizontalTextAlignment="Center"
+                           FontAttributes="Italic"
+                           Margin="0,2,0,0" 
+                           FontSize="Micro"/>
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

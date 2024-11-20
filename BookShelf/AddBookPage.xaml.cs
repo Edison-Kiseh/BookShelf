@@ -19,4 +19,25 @@ public partial class AddBookPage : ContentPage
 	{
 
 	}
+
+	private void OnSelectCoverImageClicked(object sender, EventArgs e)
+	{
+
+	}
+
+    private async void OnSelectImage(object sender, EventArgs e)
+    {
+        FileResult photo = await MediaPicker.Default.PickPhotoAsync(new MediaPickerOptions
+        {
+            Title = "Select your photo"
+        });
+
+        if (photo != null)
+        {
+            var stream = await photo.OpenReadAsync();
+            BookImage.Source = ImageSource.FromStream(() => stream);
+        }
+    }
+
+    
 }
