@@ -10,9 +10,10 @@ public partial class AddBookPage : ContentPage
         BindingContext = viewModel = new BookViewModel();
     }
 
-	private void OnAddButtonClicked(object sender, EventArgs e)
+	private async void OnAddButtonClicked(object sender, EventArgs e)
 	{
-        DisplayAlert("FAB Clicked", "You clicked the add button", "OK");
+        await Navigation.PopAsync();
+        //DisplayAlert("Alert", "FAB button clicked", "Ok");
     }
 
 	private void OnGenreSelected(object sender, EventArgs e)

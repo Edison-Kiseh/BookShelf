@@ -32,7 +32,11 @@
                                            VerticalOptions="Start"
                                            WidthRequest="120"
                                            HorizontalOptions="Start"
-                                           HeightRequest="190" />
+                                           HeightRequest="190" >
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="OnBookImageTapped" />
+                                        </Image.GestureRecognizers>
+                                    </Image>
                                     <StackLayout Grid.Row="1" Margin="6">
                                         <Label Text="{Binding Title}"
                                                FontAttributes="Bold"
@@ -71,7 +75,11 @@
                                            VerticalOptions="Start"
                                            WidthRequest="120"
                                            HorizontalOptions="Start"
-                                           HeightRequest="190" />
+                                           HeightRequest="190">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="OnBookImageTapped" />
+                                        </Image.GestureRecognizers>
+                                    </Image>
                                     <StackLayout Grid.Row="1" Margin="6">
                                         <Label Text="{Binding Title}"
                                                FontAttributes="Bold"
@@ -110,7 +118,11 @@
                                            VerticalOptions="Start"
                                            WidthRequest="120"
                                            HorizontalOptions="Start"
-                                           HeightRequest="190" />
+                                           HeightRequest="190" >
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="OnBookImageTapped" />
+                                        </Image.GestureRecognizers>
+                                    </Image>
                                     <StackLayout Grid.Row="1" Margin="6">
                                         <Label Text="{Binding Title}"
                                                FontAttributes="Bold"

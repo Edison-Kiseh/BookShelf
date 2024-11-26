@@ -11,9 +11,14 @@ namespace BookShelf
             BindingContext = viewModel = new BookViewModel();
         }
 
-        public void OnFabClicked(object sender, EventArgs e)
+        public async void OnFabClicked(object sender, EventArgs e)
         {
-            DisplayAlert("FAB Clicked", "You clicked the Floating Action Button", "OK");
+            await Shell.Current.GoToAsync(nameof(AddBookPage));
+        }
+
+        public async void OnBookImageTapped(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync(nameof(BookDetails));
         }
 
     }

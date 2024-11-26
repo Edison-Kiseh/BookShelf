@@ -5,6 +5,12 @@
         public AppShell()
         {
             InitializeComponent();
+
+            //Registering routes
+            Routing.RegisterRoute(nameof(AddBookPage), typeof(AddBookPage));
+            Routing.RegisterRoute(nameof(BookDetails), typeof(BookDetails));
+            Routing.RegisterRoute(nameof(MainPage), typeof(MainPage));
+            Routing.RegisterRoute(nameof(Favourites), typeof(Favourites));
         }
     }
 }

@@ -9,4 +9,9 @@ public partial class Favourites : ContentPage
 		InitializeComponent();
         BindingContext = viewModel = new BookViewModel();
     }
+
+    public async void OnBookImageTapped(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync(nameof(BookDetails));
+    }
 }

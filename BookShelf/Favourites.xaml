@@ -3,48 +3,78 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BookShelf.Favourites"
              Title="Favourites">
-    <ScrollView>
-        <CollectionView ItemsSource="{Binding Books}"
-                ItemsLayout="VerticalList"
-                BackgroundColor="Transparent">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Grid Padding="10" Margin="12">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <!-- For Image -->
-                            <RowDefinition Height="Auto" />
-                            <!-- For Title -->
-                            <RowDefinition Height="Auto" />
-                            <!-- For Author -->
-                        </Grid.RowDefinitions>
+    <Grid Padding="10" RowSpacing="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <!-- Header or Padding -->
+            <RowDefinition Height="*" />
+            <!-- Main Content -->
+        </Grid.RowDefinitions>
 
-                        <!-- Image -->
-                        <Image Source="{Binding CoverImageUrl}"
-                           Grid.Row="0"
-                           VerticalOptions="Center"
-                           HorizontalOptions="Center"
-                           WidthRequest="120"
-                           HeightRequest="190" />
+        <!-- Content Title -->
+        <Label Text="Favourites"
+               Grid.Row="0"
+               FontSize="Title"
+               HorizontalOptions="Center"
+               VerticalOptions="Start"
+               Margin="0,10,0,10" />
 
-                        <!-- Title -->
-                        <Label Text="{Binding Title}"
-                           Grid.Row="1"
-                           HorizontalTextAlignment="Center"
-                           FontAttributes="Bold"
-                           Margin="0,5,0,0"
-                           FontSize="Micro"/>
+        <!-- Grid for Books -->
+        <Grid Grid.Row="1" ColumnSpacing="10" RowSpacing="10">
+            <Grid.RowDefinitions>
+                <!-- Define row heights for the books -->
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
 
-                        <!-- Author -->
-                        <Label Text="{Binding Author}"
-                           Grid.Row="2"
-                           HorizontalTextAlignment="Center"
-                           FontAttributes="Italic"
-                           Margin="0,2,0,0" 
-                           FontSize="Micro"/>
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-    </ScrollView>
+            <!-- Book Template Example -->
+            <Image Source="{Binding Books[0].CoverImageUrl}"
+                   Grid.Row="0" Grid.Column="0"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"
+                   WidthRequest="120"
+                   HeightRequest="190" >
+                <Image.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnBookImageTapped" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Label Text="{Binding Books[0].Title}"
+                   Grid.Row="1" Grid.Column="0"
+                   HorizontalTextAlignment="Center"
+                   FontAttributes="Bold"
+                   Margin="0,5,0,0"
+                   FontSize="Micro"/>
+            <Label Text="{Binding Books[0].Author}"
+                   Grid.Row="2" Grid.Column="0"
+                   HorizontalTextAlignment="Center"
+                   FontAttributes="Italic"
+                   Margin="0,2,0,0" 
+                   FontSize="Micro"/>
+
+            <!-- Another Book Example -->
+            <Image Source="{Binding Books[1].CoverImageUrl}"
+                   Grid.Row="0" Grid.Column="1"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"
+                   WidthRequest="120"
+                   HeightRequest="190" />
+            <Label Text="{Binding Books[1].Title}"
+                   Grid.Row="1" Grid.Column="1"
+                   HorizontalTextAlignment="Center"
+                   FontAttributes="Bold"
+                   Margin="0,5,0,0"
+                   FontSize="Micro"/>
+            <Label Text="{Binding Books[1].Author}"
+                   Grid.Row="2" Grid.Column="1"
+                   HorizontalTextAlignment="Center"
+                   FontAttributes="Italic"
+                   Margin="0,2,0,0" 
+                   FontSize="Micro"/>
+        </Grid>
+    </Grid>
 </ContentPage>
