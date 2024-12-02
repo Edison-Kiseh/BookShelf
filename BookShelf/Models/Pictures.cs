@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookShelf.Classes.Picture
+namespace BookShelf.Models.Picture
 {
     public class Picture
     {

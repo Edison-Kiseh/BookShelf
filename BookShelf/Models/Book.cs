@@ -1,8 +1,9 @@
 ﻿
-namespace BookShelf.Classes.Book
+namespace BookShelf.Models.Book
 {
     public class Book
     {
+        public int Id { get; set; }
         public string CoverImageUrl { get; set; }      
         public string Title { get; set; }         
         public string Description { get; set; }

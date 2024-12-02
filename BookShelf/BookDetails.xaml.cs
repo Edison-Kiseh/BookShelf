@@ -1,5 +1,6 @@
 namespace BookShelf;
 using BookShelf.ViewModels;
+using BookShelf.Models.Book;
 
 public partial class BookDetails : ContentPage
 {
