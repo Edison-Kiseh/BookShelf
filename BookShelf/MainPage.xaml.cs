@@ -1,4 +1,5 @@
-﻿using BookShelf.ViewModels;
+﻿using BookShelf.Models.Book;
+using BookShelf.ViewModels;
 
 namespace BookShelf
 {
@@ -18,7 +19,11 @@ namespace BookShelf
 
         public async void OnBookImageTapped(object sender, EventArgs e)
         {
-            await Shell.Current.GoToAsync(nameof(BookDetails));
+            // it checks if the BindingContext of the Image is a Book object. If it is, it assigns the Book to the variable book.
+            if (sender is Image image && image.BindingContext is Book book)
+            {
+                await Navigation.PushAsync(new BookDetails(book));
+            }
         }
 
     }

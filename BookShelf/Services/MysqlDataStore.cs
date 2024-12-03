@@ -10,27 +10,52 @@ namespace BookShelf.Services
 {
     internal class MysqlDataStore : IDataStore
     {
-        public void AddBook(Book book)
+        public async Task AddBook(Book book)
         {
-            throw new NotImplementedException();
+            HttpClient client = new HttpClient();
+            var json = JsonConvert.SerializeObject(book);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            HttpResponseMessage response = await client.PostAsync("http://10.0.2.2:5152/api/books/", content);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception($"Failed to add book: {response.ReasonPhrase}");
+            }
         }
 
-        public void DeleteBook(Book book)
+        public async Task DeleteBook(Book book)
         {
-            throw new NotImplementedException();
+            HttpClient client = new HttpClient();
+
+            HttpResponseMessage response = await client.DeleteAsync($"http://10.0.2.2:5152/api/books/{book.Id}");
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception($"Failed to delete book: {response.ReasonPhrase}");
+            }
         }
 
         public async Task<List<Book>> GetAllBooks()
         {
             HttpClient client = new HttpClient();
-            String response = await client.GetStringAsync("http://localhost:5152/api/books/");
+            String response = await client.GetStringAsync("http://10.0.2.2:5152/api/books/");
 
             return JsonConvert.DeserializeObject<List<Book>>(response);
         }
 
-        public void UpdateBook(Book book)
+        public async Task UpdateBook(Book book)
         {
-            throw new NotImplementedException();
+            HttpClient client = new HttpClient();
+            var json = JsonConvert.SerializeObject(book);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            HttpResponseMessage response = await client.PutAsync($"http://10.0.2.2:5152/api/books/{book.Id}", content);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception($"Failed to update book: {response.ReasonPhrase}");
+            }
         }
     }
 }

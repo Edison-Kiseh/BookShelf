@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BookShelf.BookDetails"
-             Title="{Binding Books[0].Title}">
+             Title="{Binding CurrentBook.Id}">
 
     <!-- Bind title dynamically -->
     <ContentPage.ToolbarItems>
@@ -30,36 +30,36 @@
         <VerticalStackLayout Padding="20" Spacing="15">
 
             <!-- Book Cover Image -->
-            <Image Source="{Binding Books[0].CoverImageUrl}" 
+            <Image Source="{Binding CurrentBook.CoverImageUrl}" 
                    HeightRequest="300"
                    Aspect="AspectFill"
                    HorizontalOptions="Center" />
 
             <!-- Title -->
-            <Label Text="{Binding Books[0].Title}" 
+            <Label Text="{Binding CurrentBook.Title}" 
                    FontSize="24" 
                    FontAttributes="Bold"
                    HorizontalOptions="Center" />
 
             <!-- Author -->
             <Label Text="Author:" FontAttributes="Bold" />
-            <Label Text="{Binding Books[0].Author}" />
+            <Label Text="{Binding CurrentBook.Author}" />
 
             <!-- Genre -->
             <Label Text="Genre:" FontAttributes="Bold" />
-            <Label Text="{Binding Books[0].Genre}" />
+            <Label Text="{Binding CurrentBook.Genre}" />
 
             <!-- ISBN -->
             <Label Text="ISBN: " FontAttributes="Bold" />
-            <Label Text="{Binding Books[0].ISBN}" />
+            <Label Text="{Binding CurrentBook.ISBN}" />
 
             <!-- Publication Date -->
             <Label Text="Publication Date:" FontAttributes="Bold" />
-            <Label Text="{Binding Books[0].PublicationDate, StringFormat='{0:MMMM dd, yyyy}'}" />
+            <Label Text="{Binding CurrentBook.PublicationDate, StringFormat='{0:MMMM dd, yyyy}'}" />
 
             <!-- Description -->
             <Label Text="Description:" FontAttributes="Bold" />
-            <Label Text="{Binding Books[0].Description}" TextColor="Gray" />
+            <Label Text="{Binding CurrentBook.Description}" TextColor="Gray" />
 
         </VerticalStackLayout>
     </ScrollView>

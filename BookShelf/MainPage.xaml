@@ -32,7 +32,8 @@
                                            VerticalOptions="Start"
                                            WidthRequest="120"
                                            HorizontalOptions="Start"
-                                           HeightRequest="190" >
+                                           HeightRequest="190" 
+                                           Aspect="Fill">
                                         <Image.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="OnBookImageTapped" />
                                         </Image.GestureRecognizers>
@@ -69,17 +70,18 @@
                                         <RowDefinition Height="Auto" />
                                         <RowDefinition Height="1*" />
                                     </Grid.RowDefinitions>
-
-                                    <Image Source="{Binding CoverImageUrl}"
-                                           Grid.Row="0"
-                                           VerticalOptions="Start"
-                                           WidthRequest="120"
-                                           HorizontalOptions="Start"
-                                           HeightRequest="190">
+                                    <Image Source="{Binding CoverImageUrl}" 
+                                           Grid.Row="0" 
+                                           VerticalOptions="Start" 
+                                           WidthRequest="120" 
+                                           HorizontalOptions="Start" 
+                                           HeightRequest="190"
+                                           Aspect="Fill">
                                         <Image.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="OnBookImageTapped" />
                                         </Image.GestureRecognizers>
                                     </Image>
+
                                     <StackLayout Grid.Row="1" Margin="6">
                                         <Label Text="{Binding Title}"
                                                FontAttributes="Bold"

@@ -10,8 +10,8 @@ namespace BookShelf.Services
     public interface IDataStore
     {
         Task<List<Book>> GetAllBooks();
-        void AddBook(Book book);
-        void DeleteBook(Book book);
-        void UpdateBook(Book book);
+        Task AddBook(Book book);
+        Task DeleteBook(Book book);
+        Task UpdateBook(Book book);
     }
 }

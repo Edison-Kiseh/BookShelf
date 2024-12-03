@@ -10,12 +10,12 @@ namespace BookShelf.Services
 {
     internal class MockDataStore : IDataStore
     {
-        public void AddBook(Book book)
+        public Task AddBook(Book book)
         {
             throw new NotImplementedException();
         }
 
-        public void DeleteBook(Book book)
+        public Task DeleteBook(Book book)
         {
             throw new NotImplementedException();
         }
@@ -96,7 +96,7 @@ namespace BookShelf.Services
 
         }
 
-        public void UpdateBook(Book book)
+        public Task UpdateBook(Book book)
         {
             throw new NotImplementedException();
         }

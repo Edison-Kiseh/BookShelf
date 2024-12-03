@@ -11,6 +11,7 @@
             Routing.RegisterRoute(nameof(BookDetails), typeof(BookDetails));
             Routing.RegisterRoute(nameof(MainPage), typeof(MainPage));
             Routing.RegisterRoute(nameof(Favourites), typeof(Favourites));
+            Routing.RegisterRoute(nameof(EditBookPage), typeof(EditBookPage));
         }
     }
 }
