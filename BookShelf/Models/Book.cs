@@ -1,5 +1,5 @@
 ﻿
-namespace BookShelf.Models.Book
+namespace BookShelf.Models.Books
 {
     public class Book
     {

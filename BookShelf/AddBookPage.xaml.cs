@@ -1,7 +1,8 @@
 namespace BookShelf;
 
-using BookShelf.Models.Book;
+using BookShelf.Models.Books;
 using BookShelf.ViewModels;
+using System.IO;
 
 public partial class AddBookPage : ContentPage
 {
@@ -16,16 +17,48 @@ public partial class AddBookPage : ContentPage
 
     private async void OnAddButtonClicked(object sender, EventArgs e)
 	{
+        string imageUrl = "adventure.jpg";
+
+        string selectedGenre = GenrePicker.SelectedItem?.ToString();
+        if (string.IsNullOrEmpty(selectedGenre))
+        {
+            selectedGenre = "Adventure";
+        }
+        else
+        {
+            switch (selectedGenre)
+            {
+                case "Adventure":
+                    imageUrl = "adventure.jpg";
+                    break;
+                case "Science Fiction":
+                    imageUrl = "scifi.jpg";
+                    break;
+                case "Romance":
+                    imageUrl = "romance.jpg";
+                    break;
+                case "Mystery":
+                    imageUrl = "mystery.jpg";
+                    break;
+                case "Horror":
+                    imageUrl = "horror.jpg";
+                    break;
+                default:
+                    Console.WriteLine("Unknown genre selected.");
+                    break;
+            }
+        }
+
         // Gather all data into a Book object
         var newBook = new Book
         {
             Title = TitleEntry.Text,
             Author = AuthorEntry.Text,
-            Genre = GenreEntry.Text,
+            Genre = selectedGenre,
             ISBN = ISBNEntry.Text,
             PublicationDate = PublicationDatePicker.Date,
             Description = DescriptionEditor.Text,
-            CoverImageUrl = BookImage.Source?.ToString() // Ensure the image source is valid
+            CoverImageUrl = imageUrl
         };
 
         // Example: Send data to a service or print to console
@@ -36,40 +69,39 @@ public partial class AddBookPage : ContentPage
 
         // Navigate back after adding the book (optional)
         await Navigation.PopAsync();
-        //DisplayAlert("Alert", "FAB button clicked", "Ok");
     }
 
-    private async void OnSelectImage(object sender, EventArgs e)
-    {
-        try
-        {
-            FileResult photo = await MediaPicker.Default.PickPhotoAsync(new MediaPickerOptions
-            {
-                Title = "Select your photo"
-            });
+    //private async void OnSelectImage(object sender, EventArgs e)
+    //{
+    //    try
+    //    {
+    //        FileResult photo = await MediaPicker.Default.PickPhotoAsync(new MediaPickerOptions
+    //        {
+    //            Title = "Select your photo"
+    //        });
 
-            if (photo != null)
-            {
-                var stream = await photo.OpenReadAsync();
+    //        if (photo != null)
+    //        {
+    //            var stream = await photo.OpenReadAsync();
 
-                // Save the file to a writable directory
-                string appFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-                string fileName = Path.GetFileName(photo.FullPath);
-                string fullPath = Path.Combine(appFolderPath, fileName);
+    //            // Save the file to a writable directory
+    //            string appFolderPath = FileSystem.AppDataDirectory;
+    //            string fileName = Path.GetFileName(photo.FullPath);
+    //            string fullPath = Path.Combine(appFolderPath, fileName);
 
-                using (var fileStream = File.Create(fullPath))
-                {
-                    await stream.CopyToAsync(fileStream);
-                }
+    //            using (var fileStream = File.Create(fullPath))
+    //            {
+    //                await stream.CopyToAsync(fileStream);
+    //            }
 
-                // Update the ImageSource for the BookImage control with the cleaned image path
-                BookImage.Source = ImageSource.FromFile(fullPath);
-            }
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Error selecting or saving the image: {ex.Message}");
-        }
-    }
+    //            // Update the ImageSource for the BookImage control with the cleaned image path
+    //            BookImage.Source = ImageSource.FromFile(fullPath);
+    //        }
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        Console.WriteLine($"Error selecting or saving the image: {ex.Message}");
+    //    }
+    //}
 
 }

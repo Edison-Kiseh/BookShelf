@@ -5,7 +5,7 @@
              Title="AddBookPage">
     <ScrollView>
         <StackLayout Padding="20" Spacing="15">
-            <!-- Cover Image Selection -->
+            <!-- Cover Image Selection 
             <VerticalStackLayout Spacing="25" Padding="30,0" VerticalOptions="Center">
                 <Image x:Name="BookImage" 
                   BackgroundColor="Gray"
@@ -15,11 +15,11 @@
                   Aspect="AspectFill"/>
 
                 <Button
-                    Text="Pick an image"
+                    Text="Select image"
                     Clicked="OnSelectImage"
                     HorizontalOptions="Center" />
 
-            </VerticalStackLayout>
+            </VerticalStackLayout>-->
 
             <!-- Title -->
             <Entry x:Name="TitleEntry"
@@ -30,11 +30,21 @@
             <Entry x:Name="AuthorEntry"
                    Placeholder="Enter Author Name"
                    ReturnType="Next" />
-            
+
             <!-- Genre -->
-            <Entry x:Name="GenreEntry"
-                   Placeholder="Enter Genre"
-                   ReturnType="Next" />
+            <Picker x:Name="GenrePicker"
+            Title="Select Genre">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Adventure</x:String>
+                        <x:String>Science Fiction</x:String>
+                        <x:String>Romance</x:String>
+                        <x:String>Mystery</x:String>
+                        <x:String>Horror</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
 
             <!-- ISBN -->
             <Entry x:Name="ISBNEntry"

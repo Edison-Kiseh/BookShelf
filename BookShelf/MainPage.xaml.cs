@@ -1,4 +1,4 @@
-﻿using BookShelf.Models.Book;
+﻿using BookShelf.Models.Books;
 using BookShelf.ViewModels;
 
 namespace BookShelf
@@ -10,6 +10,21 @@ namespace BookShelf
         {
             InitializeComponent();
             BindingContext = viewModel = new BookViewModel();
+
+            MessagingCenter.Subscribe<BookViewModel>(this, "BookAdded", (sender) =>
+            {
+                viewModel.LoadBooks();
+            });
+
+            MessagingCenter.Subscribe<BookViewModel>(this, "BookDeleted", (sender) =>
+            {
+                viewModel.LoadBooks();
+            });
+
+            MessagingCenter.Subscribe<BookViewModel>(this, "BookUpdated", (sender) =>
+            {
+                viewModel.LoadBooks();
+            });
         }
 
         public async void OnFabClicked(object sender, EventArgs e)
@@ -25,6 +40,12 @@ namespace BookShelf
                 await Navigation.PushAsync(new BookDetails(book));
             }
         }
+
+        private void OnSearchTextChanged(object sender, TextChangedEventArgs e)
+        {
+            viewModel.SearchQuery = e.NewTextValue;
+        }
+
 
     }
 

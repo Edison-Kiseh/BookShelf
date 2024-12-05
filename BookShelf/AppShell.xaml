@@ -7,8 +7,11 @@
     Shell.FlyoutBehavior="Flyout"
     Title="BookShelf">
 
-    <TabBar>
-        <!-- Home Tab -->
+    <ShellContent
+            Title="Home"
+            ContentTemplate="{DataTemplate local:MainPage}"
+            Route="MainPage" />
+    <!--<TabBar>
         <Tab Title="Home" Icon="dotnet_bot.png">
             <ShellContent
                 Title="Home"
@@ -16,7 +19,6 @@
                 Route="MainPage" />
         </Tab>
 
-        <!-- Library Tab -->
         <Tab Title="Favourites" Icon="dotnet_bot.png">
             <ShellContent
                 Title="Favourites"
@@ -24,16 +26,5 @@
                 Route="Favourites" />
         </Tab>
 
-    </TabBar>
-
-    <ShellContent
-        Title="Add book"
-        ContentTemplate="{DataTemplate local:AddBookPage}"
-        Route="AddBookPage" />
-
-    <ShellContent
-        Title="Book details"
-        ContentTemplate="{DataTemplate local:AddBookPage}"
-        Route="BookDetails"/>
-
+    </TabBar>-->
 </Shell>

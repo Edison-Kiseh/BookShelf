@@ -6,12 +6,6 @@
 
     <!-- Bind title dynamically -->
     <ContentPage.ToolbarItems>
-        <!-- Favourite Button -->
-        <ToolbarItem Text="Favourite" 
-                     IconImageSource="star.png" 
-                     Order="Primary"
-                     Clicked="OnStarClicked" />
-        
         <!-- Edit Button -->
         <ToolbarItem Text="Edit" 
                      IconImageSource="edit.png" 

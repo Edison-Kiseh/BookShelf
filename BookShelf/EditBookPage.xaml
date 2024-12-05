@@ -5,7 +5,7 @@
              Title="EditBookPage">
     <ScrollView>
         <StackLayout Padding="20" Spacing="15">
-            <!-- Cover Image Selection -->
+            <!-- Cover Image Selection 
             <VerticalStackLayout Spacing="25" Padding="30,0" VerticalOptions="Center">
                 <Image x:Name="BookImage" 
                   Source="{Binding CurrentBook.CoverImageUrl}"
@@ -20,7 +20,7 @@
                     Clicked="OnSelectImage"
                     HorizontalOptions="Center" />
 
-            </VerticalStackLayout>
+            </VerticalStackLayout>-->
 
             <!-- Title -->
             <Entry x:Name="TitleEntry"
@@ -33,9 +33,18 @@
                    ReturnType="Next" />
 
             <!-- Genre -->
-            <Entry x:Name="GenreEntry"
-                   Placeholder="{Binding CurrentBook.Genre}"
-                   ReturnType="Next" />
+            <Picker x:Name="GenreEntry"
+            Title="{Binding CurrentBook.Genre}">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Adventure</x:String>
+                        <x:String>Science Fiction</x:String>
+                        <x:String>Romance</x:String>
+                        <x:String>Mystery</x:String>
+                        <x:String>Horror</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
 
             <!-- ISBN -->
             <Entry x:Name="ISBNEntry"
