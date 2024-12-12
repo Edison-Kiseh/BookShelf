@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BookShelf.BookDetails"
-             Title="{Binding CurrentBook.Id}">
+             Title="Book Details">
 
     <!-- Bind title dynamically -->
     <ContentPage.ToolbarItems>
@@ -25,36 +25,59 @@
 
             <!-- Book Cover Image -->
             <Image Source="{Binding CurrentBook.CoverImageUrl}" 
-                   HeightRequest="300"
-                   Aspect="AspectFill"
-                   HorizontalOptions="Center" />
+               HeightRequest="300"
+               Aspect="AspectFill"
+               HorizontalOptions="Center" />
 
             <!-- Title -->
             <Label Text="{Binding CurrentBook.Title}" 
-                   FontSize="24" 
-                   FontAttributes="Bold"
-                   HorizontalOptions="Center" />
+               FontSize="24" 
+               FontAttributes="Bold"
+               HorizontalOptions="Center"
+               MaxLines="1" 
+               LineBreakMode="TailTruncation" />
 
             <!-- Author -->
-            <Label Text="Author:" FontAttributes="Bold" />
-            <Label Text="{Binding CurrentBook.Author}" />
+            <HorizontalStackLayout Spacing="5"
+                HorizontalOptions="Fill">
+                <Label Text="Author:" 
+                    FontAttributes="Bold" />
+                <Label Text="{Binding CurrentBook.Author}" 
+                   MaxLines="1"
+                   LineBreakMode="TailTruncation"
+                   HorizontalOptions="FillAndExpand"
+                   WidthRequest="260" />
+            </HorizontalStackLayout>
 
             <!-- Genre -->
-            <Label Text="Genre:" FontAttributes="Bold" />
-            <Label Text="{Binding CurrentBook.Genre}" />
+            <HorizontalStackLayout Spacing="5">
+                <Label Text="Genre:" FontAttributes="Bold" />
+                <Label Text="{Binding CurrentBook.Genre}" 
+                   LineBreakMode="WordWrap" />
+            </HorizontalStackLayout>
 
             <!-- ISBN -->
-            <Label Text="ISBN: " FontAttributes="Bold" />
-            <Label Text="{Binding CurrentBook.ISBN}" />
+            <HorizontalStackLayout Spacing="5">
+                <Label Text="ISBN: " FontAttributes="Bold" />
+                <Label Text="{Binding CurrentBook.ISBN}" 
+                   LineBreakMode="WordWrap" />
+            </HorizontalStackLayout>
 
             <!-- Publication Date -->
-            <Label Text="Publication Date:" FontAttributes="Bold" />
-            <Label Text="{Binding CurrentBook.PublicationDate, StringFormat='{0:MMMM dd, yyyy}'}" />
+            <HorizontalStackLayout Spacing="5">
+                <Label Text="Publication Date:" FontAttributes="Bold" />
+                <Label Text="{Binding CurrentBook.PublicationDate, StringFormat='{0:MMMM dd, yyyy}'}" 
+                   LineBreakMode="WordWrap" />
+            </HorizontalStackLayout>
 
             <!-- Description -->
-            <Label Text="Description:" FontAttributes="Bold" />
-            <Label Text="{Binding CurrentBook.Description}" TextColor="Gray" />
+            <VerticalStackLayout Spacing="5">
+                <Label Text="Description:" FontAttributes="Bold" />
+                <Label Text="{Binding CurrentBook.Description}" 
+                   LineBreakMode="WordWrap" />
+            </VerticalStackLayout>
 
         </VerticalStackLayout>
     </ScrollView>
+
 </ContentPage>

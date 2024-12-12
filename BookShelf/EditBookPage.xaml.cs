@@ -72,38 +72,4 @@ public partial class EditBookPage : ContentPage
         // After updating, return to the previous page (BookDetails)
         await Shell.Current.GoToAsync("//MainPage");
     }
-
-    //private async void OnSelectImage(object sender, EventArgs e)
-    //{
-    //    try
-    //    {
-    //        FileResult photo = await MediaPicker.Default.PickPhotoAsync(new MediaPickerOptions
-    //        {
-    //            Title = "Select your photo"
-    //        });
-
-    //        if (photo != null)
-    //        {
-    //            var stream = await photo.OpenReadAsync();
-
-    //            // Save the file to a writable directory
-    //            string appFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-    //            string fileName = Path.GetFileName(photo.FullPath);
-    //            string fullPath = Path.Combine(appFolderPath, fileName);
-
-    //            using (var fileStream = File.Create(fullPath))
-    //            {
-    //                await stream.CopyToAsync(fileStream);
-    //            }
-
-    //            // Update the ImageSource for the BookImage control with the cleaned image path
-    //            BookImage.Source = ImageSource.FromFile(fullPath);
-    //        }
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        Console.WriteLine($"Error selecting or saving the image: {ex.Message}");
-    //    }
-    //}
-
 }

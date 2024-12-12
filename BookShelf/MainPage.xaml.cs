@@ -29,7 +29,8 @@ namespace BookShelf
 
         public async void OnFabClicked(object sender, EventArgs e)
         {
-            await Shell.Current.GoToAsync(nameof(AddBookPage));
+            //await Shell.Current.GoToAsync(nameof(AddBookPage));
+            await Navigation.PushAsync(new AddBookPage());
         }
 
         public async void OnBookImageTapped(object sender, EventArgs e)

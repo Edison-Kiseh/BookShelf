@@ -2,71 +2,64 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BookShelf.EditBookPage"
-             Title="EditBookPage">
+             Title="Edit Book">
     <ScrollView>
         <StackLayout Padding="20" Spacing="15">
-            <!-- Cover Image Selection 
-            <VerticalStackLayout Spacing="25" Padding="30,0" VerticalOptions="Center">
-                <Image x:Name="BookImage" 
-                  Source="{Binding CurrentBook.CoverImageUrl}"
-                  BackgroundColor="Gray"
-                  WidthRequest="300"
-                  HeightRequest="300"
-                  HorizontalOptions="Center" 
-                  Aspect="AspectFill"/>
+            <Label Text="Enter Book Details"
+                    FontSize="25" 
+                    FontAttributes="Bold" 
+                    HorizontalTextAlignment="Center"
+                    Margin="0,30,0,0" />
 
-                <Button
-                    Text="Select a different image"
-                    Clicked="OnSelectImage"
-                    HorizontalOptions="Center" />
+            <Grid VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+                <VerticalStackLayout Spacing="15" WidthRequest="350">
+                    <!-- Title -->
+                    <Entry x:Name="TitleEntry"
+                       Placeholder="{Binding CurrentBook.Title}"
+                       ReturnType="Next" />
 
-            </VerticalStackLayout>-->
+                    <!-- Author -->
+                    <Entry x:Name="AuthorEntry"
+                       Placeholder="{Binding CurrentBook.Author}"
+                       ReturnType="Next" />
 
-            <!-- Title -->
-            <Entry x:Name="TitleEntry"
-                   Placeholder="{Binding CurrentBook.Title}"
-                   ReturnType="Next" />
+                    <!-- Genre -->
+                    <Picker x:Name="GenreEntry"
+                        Title="{Binding CurrentBook.Genre}">
+                                <Picker.ItemsSource>
+                                    <x:Array Type="{x:Type x:String}">
+                                        <x:String>Adventure</x:String>
+                                        <x:String>Science Fiction</x:String>
+                                        <x:String>Romance</x:String>
+                                        <x:String>Mystery</x:String>
+                                        <x:String>Horror</x:String>
+                                    </x:Array>
+                                </Picker.ItemsSource>
+                            </Picker>
 
-            <!-- Author -->
-            <Entry x:Name="AuthorEntry"
-                   Placeholder="{Binding CurrentBook.Author}"
-                   ReturnType="Next" />
+                    <!-- ISBN -->
+                    <Entry x:Name="ISBNEntry"
+                       Placeholder="{Binding CurrentBook.ISBN}"
+                       Keyboard="Numeric"
+                       ReturnType="Next" />
 
-            <!-- Genre -->
-            <Picker x:Name="GenreEntry"
-            Title="{Binding CurrentBook.Genre}">
-                <Picker.ItemsSource>
-                    <x:Array Type="{x:Type x:String}">
-                        <x:String>Adventure</x:String>
-                        <x:String>Science Fiction</x:String>
-                        <x:String>Romance</x:String>
-                        <x:String>Mystery</x:String>
-                        <x:String>Horror</x:String>
-                    </x:Array>
-                </Picker.ItemsSource>
-            </Picker>
-
-            <!-- ISBN -->
-            <Entry x:Name="ISBNEntry"
-                   Placeholder="{Binding CurrentBook.ISBN}"
-                   Keyboard="Numeric"
-                   ReturnType="Next" />
-
-            <!-- Publication Date -->
-            <DatePicker x:Name="PublicationDatePicker"
+                    <!-- Publication Date -->
+                    <DatePicker x:Name="PublicationDatePicker"
                         Date="{Binding CurrentBook.PublicationDate, StringFormat='{0:MMMM dd, yyyy}'}"
                         Format="D" />
 
-            <!-- Description -->
-            <Editor x:Name="DescriptionEditor"
-                    Placeholder="{Binding CurrentBook.Description}"
-                    HeightRequest="100" />
+                    <!-- Description -->
+                    <Editor x:Name="DescriptionEditor"
+                        Placeholder="{Binding CurrentBook.Description}"
+                        HeightRequest="100" />
 
-            <!-- Add Button -->
-            <Button Text="Save changes"
-                    Clicked="OnUpdateButtonClicked"
-                    BackgroundColor="Red"
-                    TextColor="White" />
+                    <!-- Add Button -->
+                    <Button Text="Save changes"
+                        Clicked="OnUpdateButtonClicked"
+                        BackgroundColor="Red"
+                        TextColor="White" />
+                </VerticalStackLayout>
+            </Grid>
 
         </StackLayout>
     </ScrollView>

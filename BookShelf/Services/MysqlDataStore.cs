@@ -16,7 +16,7 @@ namespace BookShelf.Services
             var json = JsonConvert.SerializeObject(book);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-            HttpResponseMessage response = await client.PostAsync("http://192.168.1.13:5152/api/books/", content);
+            HttpResponseMessage response = await client.PostAsync("http://192.168.1.13:5000/api/books/", content);
 
             if (!response.IsSuccessStatusCode)
             {
@@ -28,7 +28,7 @@ namespace BookShelf.Services
         {
             HttpClient client = new HttpClient();
 
-            HttpResponseMessage response = await client.DeleteAsync($"http://192.168.1.13:5152/api/books/{book.Id}");
+            HttpResponseMessage response = await client.DeleteAsync($"http://192.168.1.13:5000/api/books/{book.Id}");
 
             if (!response.IsSuccessStatusCode)
             {
@@ -39,7 +39,7 @@ namespace BookShelf.Services
         public async Task<List<Book>> GetAllBooks()
         {
             HttpClient client = new HttpClient();
-            String response = await client.GetStringAsync("http://192.168.1.13:5152/api/books/");
+            String response = await client.GetStringAsync("http://192.168.1.13:5000/api/books/");
 
             return JsonConvert.DeserializeObject<List<Book>>(response);
         }
@@ -50,7 +50,7 @@ namespace BookShelf.Services
             var json = JsonConvert.SerializeObject(book);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-            HttpResponseMessage response = await client.PutAsync($"http://192.168.1.13:5152/api/books/{book.Id}", content);
+            HttpResponseMessage response = await client.PutAsync($"http://192.168.1.13:5000/api/books/{book.Id}", content);
 
             if (!response.IsSuccessStatusCode)
             {

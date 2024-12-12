@@ -55,6 +55,7 @@ namespace BookShelf.ViewModels
 
         public IDataStore DataStore => DependencyService.Get<IDataStore>();
 
+
         // Constructor to initialize sample data
         public BookViewModel()
         {
@@ -83,12 +84,6 @@ namespace BookShelf.ViewModels
 
             foreach (var book in books)
             {
-                // Clean the image URL for the book if necessary (removing 'File: ' prefix)
-                if (!string.IsNullOrEmpty(book.CoverImageUrl) && book.CoverImageUrl.StartsWith("File: "))
-                {
-                    book.CoverImageUrl = book.CoverImageUrl.Substring(5);  // Remove 'File: ' prefix
-                }
-
                 // Group books by category
                 if (!string.IsNullOrEmpty(book.Genre))
                 {
@@ -113,6 +108,8 @@ namespace BookShelf.ViewModels
                     Books = category.Value
                 });
             }
+
+            OnPropertyChanged(nameof(Categories));
         }
         private void FilterBooks()
         {
@@ -145,6 +142,10 @@ namespace BookShelf.ViewModels
                 .ToList();
 
             Categories = new ObservableCollection<Category>(groupedBooks);
+
+            // Check if categories are empty
+            IsCategoriesEmpty = !Categories.Any();
+            OnPropertyChanged(nameof(Categories));
         }
 
         public async Task AddBook(Book book)
@@ -159,6 +160,12 @@ namespace BookShelf.ViewModels
         {
             await DataStore.DeleteBook(book);
             Books.Remove(book);
+
+            // Update categories after deletion
+            UpdateCategories(Books);
+
+            // Notify UI of change
+            OnPropertyChanged(nameof(Categories));
 
             MessagingCenter.Send(this, "BookDeleted");
         }
